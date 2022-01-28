@@ -1,3 +1,49 @@
+// If target is in array, return its index, otherwise return -1
+var search = function(nums, target) {
+    var targetIndex = -1
+    for (var i = 0;i < nums.length;i++) {
+        if (nums[i] == target) {
+            targetIndex = [i]
+            return targetIndex
+        } 
+    }
+    if (targetIndex == -1){
+        return targetIndex
+    }
+};
+
+// First bad version of API and everything after are bad
+var solution = function(isBadVersion) {
+    
+    return function(n) {
+        let l = 1, r = n
+        while (l < r) {
+            const m = Math.floor((r + l) / 2)
+            if (!isBadVersion(m)) l = m + 1
+            else r = m
+        }
+        
+        return l
+        
+    };
+};
+
+// Return the index of the target in a sorted array, if it isn't there return the index of where it would be
+var searchInsert = function(nums, target) {
+    var start = 0;
+    var end = (nums.length)-1
+    while(start <= end){
+        let mid = Math.floor((start+end)/2);
+        if(target>nums[mid]){
+            start = mid+ 1
+        }
+        else {
+            end = mid-1
+        }
+    }
+    return start
+};
+
 // Square and return array with all values squared
 
 var sortedSquares = function(nums) {
